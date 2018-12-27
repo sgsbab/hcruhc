@@ -1,0 +1,7 @@
+node_modules/
+src/server/dataFiles/church/archive/
+src/server/dataFiles/user/archive/
+src/assets/
+src/main.js
+server.js
+README.md

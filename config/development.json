@@ -1,0 +1,45 @@
+{
+    "_info": "set environment variable - SET NODE_ENV=development",
+    "_info1": "For setting PORT - SET PORT=5000",    
+    "environ": "local",
+    "http" : "http://",
+    "https": "https://",
+    "name": "CSI App - Development",
+    "domainName": "localhost",
+    "port": "process.env.PORT",
+    "mail": 
+    {
+        "service": "gmail",
+        "user": "scicsi@gmail.com",
+        "subject" : "CSI",
+        "htmlMail": "html",
+        "textMail": "text"
+    },
+    "templates":
+    {
+        "userCreation": "../ilor/config/templates/welcomeuser/usercreation.html",
+        "userpwdReset": "../ilor/config/templates/welcomeuser/userpwdreset.html",
+        "welcomeUrl" : "/#!/emailAuth?cusId="
+    },
+    "_comment1": "set true to load the static data",
+    "loadStaticData":
+    {
+        "reporttype": false,
+        "propertytype": false
+    },
+    "fileLocation":
+    {
+        "localDriveUser": "./src/server/dataFiles/user/",
+        "localArchiveUser": "./src/server/dataFiles/user/archive/",
+        "userFileName": "Church_User_Input_v1.xlsx",        
+        "localDriveChurch": "./src/server/dataFiles/church/",
+        "localArchiveChurch": "./src/server/dataFiles/church/archive/",
+        "churchFileName": "Church_Input_v1.xlsx"
+    },
+    "cronTimings":
+    {   
+        "ftpLoad": "2",
+        "reportFrequency": "5"
+    },
+    "jwtPrivateKey":""
+}
