@@ -56,7 +56,7 @@ export default {
     //     console.log(error)
     //   })
     // },
-    getchDetails: function () {
+    getChDetails: function () {
       console.log('window.sessionStorage.getItem(chInfo): ', window.sessionStorage.getItem('chInfo').chDetailsObj)
       if (this.$store.getters.GET_CH_DETAILS_OBJ === null) {
         let searchChParamObj = this.$store.getters.GET_SEARCH_CHPARAM
@@ -165,7 +165,7 @@ export default {
     // } else {
     //   this.getChObjFromStore()
     // }
-    this.getchDetails()
+    this.getChDetails()
     // this.getChObjFromStore()
   }
   // computed: {

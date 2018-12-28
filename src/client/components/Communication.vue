@@ -80,10 +80,15 @@ export default {
         console.log('Communication Login response data: ', response)
         // var authResp = response.data
         if (response.status === 200) {
-          router.push({ path: '/khhsn5hfbdj2j6jgski86gvnhc' })
+          if (response.data != null) {
+            this.$store.commit('SET_LOGIN_AUTHTOKEN', response.data)
+            router.push({ path: '/khhsn5hfbdj2j6jgski86gvnhc' })
+          } else {
+            this.error = 'Authentication failed.'
+          }
         }
       }).catch((error) => {
-        console.log('error ss: ', error.response.data)
+        console.log('Communication error : ', error.response.data)
         this.error = error.response.data
       })
     },

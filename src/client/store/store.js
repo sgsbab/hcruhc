@@ -19,7 +19,8 @@ const vuexSessionStorage = new VuexPersist({
 export const store = new Vuex.Store({
   state: {
     searchChParamObj: null,
-    chDetailsObj: null
+    chDetailsObj: null,
+    loginAuthToken: null
   },
   getters: {
     GET_SEARCH_CHPARAM: state => {
@@ -27,15 +28,21 @@ export const store = new Vuex.Store({
     },
     GET_CH_DETAILS_OBJ: state => {
       return state.chDetailsObj
+    },
+    GET_LOGIN_AUTHTOKEN: state => {
+      return state.loginAuthToken
     }
   },
   mutations: {
-    SET_SEARCH_CHPARAM: (state, payloadParam) => {
-      state.searchChParamObj = payloadParam
+    SET_SEARCH_CHPARAM: (state, payload) => {
+      state.searchChParamObj = payload
     },
-    SET_CH_DETAILS_DB: (state, payloadDB) => {
-      state.chDetailsObj = payloadDB
-      window.sessionStorage.setItem('chInfo', payloadDB)
+    SET_CH_DETAILS_DB: (state, payload) => {
+      state.chDetailsObj = payload
+      window.sessionStorage.setItem('chInfo', payload)
+    },
+    SET_LOGIN_AUTHTOKEN: (state, payload) => {
+      state.loginAuthToken = payload
     }
   },
   // actions: {

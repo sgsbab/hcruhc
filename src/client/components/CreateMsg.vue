@@ -1,6 +1,7 @@
 <template>
 <div align="center">
-  <b-card title="Send Message"
+  <div v-if="loginAuthToken != null">
+    <b-card title="Send Message"
           img-src="https://picsum.photos/600/300/?random"
           img-alt="Image"
           img-top
@@ -21,7 +22,12 @@
             <b-button type="submit" variant="success">Submit</b-button>
           </b-form>
           </div>
-  </b-card>
+    </b-card>
+  </div>
+  <div v-else>
+      <h3>*** PLEASE LOGIN TO SEND MESSAGE ***</h3>
+      <h3>***** Thank You *****</h3>
+  </div>
 </div>
 </template>
 
@@ -33,6 +39,7 @@ export default {
     return {
       msgOccasion: 'null',
       msgDesc: '',
+      loginAuthToken: null,
       options: [
         { value: null, text: 'Please select an option' },
         { value: 'Birthday Wishes', text: 'Birthday Wishes' },
@@ -52,6 +59,7 @@ export default {
       console.log('Message Description: ', this.msgDesc)
       let url = 'http://localhost:3600/user/comm'
       let param = {
+        authToken: this.loginAuthToken,
         msgOccasion: this.msgOccasion,
         msgDesc: this.msgDesc
       }
@@ -63,6 +71,10 @@ export default {
       this.msgOccasion = ''
       this.msgDesc = ''
     }
+  },
+  beforeMount: function () {
+    this.loginAuthToken = this.$store.getters.GET_LOGIN_AUTHTOKEN
+    console.log('loginAuthToken from store:', this.loginAuthToken)
   }
 }
 </script>
