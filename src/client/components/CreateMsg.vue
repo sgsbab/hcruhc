@@ -13,14 +13,15 @@
             <b-form-select v-model="msgOccasion" :options="options" class="mb-3" required/>
             <b-form-textarea id="textarea1"
                         v-model="msgDesc"
-                        required
                         placeholder="Enter detailed message here..."
                         :rows="3"
+                        required
                         :max-rows="10">
             </b-form-textarea>
             <br>
             <b-button type="submit" variant="success">Submit</b-button>
-          </b-form>
+            <b-button type="logout" variant="danger" @click="onLogout">Logout</b-button>
+            </b-form>
           </div>
     </b-card>
   </div>
@@ -33,13 +34,17 @@
 
 <script>
 import axios from 'axios'
+import router from '../router'
+
 export default {
   name: 'CreateMsg',
   data () {
     return {
       msgOccasion: 'null',
-      msgDesc: '',
+      msgDesc: null,
       loginAuthToken: null,
+      axios_url: null,
+      fieldRequired: true,
       options: [
         { value: null, text: 'Please select an option' },
         { value: 'Birthday Wishes', text: 'Birthday Wishes' },
@@ -57,7 +62,10 @@ export default {
       // if (event) event.preventDefault()
       console.log('Message Occasion: ', this.msgOccasion)
       console.log('Message Description: ', this.msgDesc)
-      let url = 'http://localhost:3600/user/comm'
+      if (this.axios_url === null) {
+        this.axios_url = process.env.AXIOS_BASE_URL
+      }
+      let url = this.axios_url.concat('/user/comm')
       let param = {
         authToken: this.loginAuthToken,
         msgOccasion: this.msgOccasion,
@@ -70,11 +78,19 @@ export default {
       })
       this.msgOccasion = ''
       this.msgDesc = ''
+    },
+    onLogout (event) {
+      this.$store.commit('SET_LOGIN_AUTHTOKEN', null)
+      router.push({ path: '/x34ysd765kuysdksnst56mb9m' })
     }
   },
   beforeMount: function () {
     this.loginAuthToken = this.$store.getters.GET_LOGIN_AUTHTOKEN
     console.log('loginAuthToken from store:', this.loginAuthToken)
+  },
+  mounted: function () {
+    this.axios_url = process.env.AXIOS_BASE_URL
+    console.log('axios_url: ', this.axios_url)
   }
 }
 </script>

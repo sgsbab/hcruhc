@@ -13,7 +13,7 @@
             <div class="alert alert-danger" role="alert" v-if="error != null" style="height=20;">
               <p v-html="error"></p>
             </div>
-            <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
+            <b-form @submit.prevent="onSubmit" @clear="onClear" v-if="show">
             <b-form-group id="inputGroupLoginName" label-for="InputLoginName">
               <p style="text-align:left">User Name:</p>
               <b-form-input
@@ -41,7 +41,7 @@
               <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
             <!-- </router-link> -->
             <b-button type="submit" variant="primary">Login</b-button>
-            <b-button type="reset" variant="success">Clear</b-button>
+            <b-button type="clear" variant="success">Clear</b-button>
             </b-form>
           </div>
         </b-card>
@@ -61,6 +61,7 @@ export default {
     return {
       show: true,
       error: null,
+      axios_url: null,
       form: {
         loginName: '',
         loginPassword: ''
@@ -71,7 +72,10 @@ export default {
     onSubmit (evt) {
       // evt.preventDefault()
       // if (event) event.preventDefault()
-      let url = 'http://localhost:3600/user/vCred'
+      if (this.axios_url === null) {
+        this.axios_url = process.env.AXIOS_BASE_URL
+      }
+      let url = this.axios_url.concat('/user/vCred')
       let param = {
         loginName: this.form.loginName,
         loginPassword: this.form.loginPassword
@@ -92,7 +96,7 @@ export default {
         this.error = error.response.data
       })
     },
-    onReset (evt) {
+    onClear (evt) {
       evt.preventDefault()
       /* Reset our form values */
       this.form.loginName = ''
@@ -103,6 +107,10 @@ export default {
         this.show = true
       })
     }
+  },
+  mounted: function () {
+    this.axios_url = process.env.AXIOS_BASE_URL
+    console.log('axios_url: ', this.axios_url)
   }
 }
 </script>

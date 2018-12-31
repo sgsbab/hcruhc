@@ -37,7 +37,8 @@ export default {
       chDetailsObj: '',
       chImg: null,
       chName: null,
-      chDesc: null
+      chDesc: null,
+      axios_url: null
     }
   },
   methods: {
@@ -61,7 +62,11 @@ export default {
       if (this.$store.getters.GET_CH_DETAILS_OBJ === null) {
         let searchChParamObj = this.$store.getters.GET_SEARCH_CHPARAM
         console.log('Ab getters PARAM payload: ', searchChParamObj)
-        let url = 'http://localhost:3600/ch/getch'
+        if (this.axios_url === null) {
+          this.axios_url = process.env.AXIOS_BASE_URL
+        }
+        // let url = 'http://localhost:3600/ch/getch'
+        let url = this.axios_url.concat('/ch/getch')
         let param = {
           selDiocese: searchChParamObj.selDiocese,
           selChurchLocation: searchChParamObj.selChurchLocation,
