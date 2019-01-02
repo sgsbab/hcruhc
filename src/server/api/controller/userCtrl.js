@@ -116,8 +116,28 @@ async function resetCred(cObj)
 */
 async function communication(comObj)
 {
+    let successFlag=false;
     let commDetail = await UserAction(comObj);
-    commDetail.save().then(result => '').catch(err => console.log(err));
+    commDetail.save().then(result => 
+        {
+            successFlag=true;
+            return new Promise((resolve, reject) => 
+            {
+                if (successFlag)
+                    resolve(successFlag);
+            });
+        })
+        .catch(err => 
+        {
+            successFlag=false;
+            return new Promise((resolve, reject) => 
+            {
+                reject(successFlag);
+            });
+
+        });
+    //console.log('userCtrl - communication - successFlag: ', successFlag);
+
 }
 
 /*

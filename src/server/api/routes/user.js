@@ -75,8 +75,11 @@ router.post('/comm', jsonParser, async (req, res) =>
     let cObj={};
     cObj.msgOccasion = msgOcc;
     cObj.msgDesc = msgDes;
-    let cResult = communication(cObj);
+    let cResult = communication(cObj)
+    .then(resl => res.status(200).send('Communication is successful'))
+    .catch(err => res.status(400).send('Communication failed'));
     console.log('User - Communication - Result: ', msgOcc);
+
 });
 
 /* This method is used to update Church User data to the User Collection from mobile app

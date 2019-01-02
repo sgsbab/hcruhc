@@ -66,13 +66,17 @@ export default {
         this.axios_url = process.env.AXIOS_BASE_URL
       }
       let url = this.axios_url.concat('/user/comm')
+      var hearders = {
+        'Content-Type': 'application/json',
+        'Authorization': this.loginAuthToken
+      }
       let param = {
-        authToken: this.loginAuthToken,
+        // authToken: this.loginAuthToken,
         msgOccasion: this.msgOccasion,
         msgDesc: this.msgDesc
       }
-      axios.post(url, param).then((response) => {
-        console.log(response)
+      axios.post(url, param, {hearders: hearders}).then((response) => {
+        console.log('Response: ', response.status)
       }).catch((error) => {
         console.log(error)
       })
