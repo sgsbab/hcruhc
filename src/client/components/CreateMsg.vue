@@ -2,11 +2,11 @@
 <div align="center">
   <div v-if="loginAuthToken != null">
     <b-card title="Send Message"
-          img-src="https://picsum.photos/600/300/?random"
+          img-src="@/assets/createMsg.jpg"
           img-alt="Image"
           img-top
           tag="article"
-          style="max-width: 35rem;"
+          style="max-width: 30rem;"
           class="mb-2">
           <div>
             <b-form @submit.prevent="onSubmit">

@@ -1,5 +1,6 @@
 <template>
-  <div class="container-fluid">
+  <div class="mx-5">
+    <p class="p-2"></p>
     <b-carousel id="carousel" :interval="4000">
       <!-- @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"-->

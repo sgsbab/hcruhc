@@ -1,5 +1,5 @@
 <template>
-  <div align="left">
+  <div class="mx-5" align="left">
     <!-- Header -->
     <header class="header">
       <!-- Top Bar -->

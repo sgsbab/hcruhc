@@ -1,24 +1,85 @@
 <template>
-        <div class="container-fluid">
-             <b-card class="mt-5">
+        <div class="mx-5">
+             <b-card class="mt-5" bg-variant="light">
                  <div class="p-1">
                     <b-img src="@/assets/church_1.png" alt></b-img>
                     <!-- <h3 class="text-center">Welcome to St. Peter's Church</h3> -->
                     <h3 class="text-center">Welcome to {{ chName }}</h3>
-                    <div class="text-center">God loves us all</div>
+                    <span class="text-center" style="font-family: Gotham A; font-style: italic">God loves us all</span>
                     <p class="p-1"></p>
                   </div>
                 <div class="row">
                     <div class="col-sm-8">
-                        <p class="text-left" style="font-size: 19px; font-family: Open Sans; font-style: normal;">{{ chDesc }}</p>
+                        <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">{{ chDesc }}</p>
                     </div>
                     <div class="col-sm-4">
-                        <b-img class="p-1" slot="aside" src="@/assets/CSI_photo.jpg" width="400" alt="placeholder" />
+                        <b-img class="p-1" slot="aside" src="@/assets/CSI_photo.jpg" width="350" alt="placeholder" />
                         <!-- <b-img class="p-1" slot="aside" v-bind:src="getChImg()" width="400" alt="placeholder" /> -->
                         <!-- <b-img class="p-1" slot="aside" width="400" :src="getChImg"></b-img> -->
                     </div>
                 </div>
-           </b-card>
+             </b-card>
+             <b-card class="mt-5 text-white" style="background-color: rgb(0,0,0);">
+                 <div class="p-0">
+                    <b-img src="@/assets/church_2.png" alt></b-img>
+                    <p class="p-2"></p>
+                    <!-- <h3 class="text-center">Welcome to St. Peter's Church</h3> -->
+                    <h2 class="text-center">Our Church Main Activities</h2>
+                    <span class="text-center" style="font-family: Gotham A; font-style: italic">God loves us all</span>
+                    <p class="p-1"></p>
+                  </div>
+                <div>
+                   <span class="text-center col-sm-15" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">There are many wonderful Christmas events you can participate in as a church, and the Christmas season is also a great time to intentionally reach out to your community.
+                     Many non-churchgoers are on the lookout for family Christmas activities or where to attend a Christmas Eve service, and there may be some families in need within your community who could use a little help this Christmas.</span>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-lg-2 col-md-4 col-sm-6">
+                  <p class="p-2"></p>
+                  <div class="activies_item">
+                    <b-img src="@/assets/eventsLink.png" alt/>
+                  </div>
+                  <div class="activies_title">
+                    <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Events</span></b-link>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                  <p class="p-2"></p>
+                  <div class="activies_item">
+                    <b-img src="@/assets/churchEventsLink.png" alt/>
+                  </div>
+                  <div class="activies_title">
+                    <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Church Timings</span></b-link>
+                  </div>
+                </div>
+                  <div class="col-lg-2 col-md-4 col-sm-6">
+                    <p class="p-2"></p>
+                    <div class="activies_item">
+                      <b-img src="@/assets/sermonsLink.png" alt/>
+                    </div>
+                    <div class="activies_title">
+                      <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Sermons</span></b-link>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-4 col-sm-6">
+                    <p class="p-2"></p>
+                    <div class="activies_item">
+                      <b-img src="@/assets/dailyMassLink.png" alt/>
+                    </div>
+                    <div class="activies_title">
+                      <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Daily Mass</span></b-link>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-4 col-sm-6">
+                    <p class="p-2"></p>
+                    <div class="activies_item">
+                      <b-img src="@/assets/dailyPrayersLink.png" alt/>
+                    </div>
+                    <div class="activies_title">
+                      <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Daily Prayers</span></b-link>
+                    </div>
+                  </div>
+                </div>
+             </b-card>
         </div>
 </template>
 
@@ -183,5 +244,19 @@ export default {
 </script>
 
 <style>
-
+.activies_item {
+    width: 140%;
+    margin-bottom: 10px;
+}
+.activies_title {
+    width: 140%;
+    display: inline-block;
+    font-size: 18px;
+    color: #FFFFFF;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
 </style>

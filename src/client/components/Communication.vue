@@ -7,13 +7,12 @@
         img-alt="Image"
         img-top
         style="max-width: 23rem;"
-        class="mb-2"
-        >
+        class="mb-2">
           <div>
             <div class="alert alert-danger" role="alert" v-if="error != null" style="height=20;">
               <p v-html="error"></p>
             </div>
-            <b-form @submit.prevent="onSubmit" @clear="onClear" v-if="show">
+            <b-form @submit.prevent="onSubmit" v-if="show">
             <b-form-group id="inputGroupLoginName" label-for="InputLoginName">
               <p style="text-align:left">User Name:</p>
               <b-form-input
@@ -21,27 +20,26 @@
                 type="text"
                 v-model="form.loginName"
                 required
-                placeholder="Enter Email"
-              ></b-form-input>
+                placeholder="Enter your signed up email id">
+                </b-form-input>
             </b-form-group>
             <b-form-group
               id="inputGroupLoginPassword"
-              label-for="InputLoginPassword"
-            >
+              label-for="InputLoginPassword">
               <p style="text-align:left">Password:</p>
               <b-form-input
                 id="InputLoginPassword"
                 type="password"
                 v-model="form.loginPassword"
                 required
-                placeholder="Enter Password"
+                placeholder="Enter password"
               ></b-form-input>
             </b-form-group>
             <!-- <router-link to="/events"> -->
               <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
             <!-- </router-link> -->
             <b-button type="submit" variant="primary">Login</b-button>
-            <b-button type="clear" variant="success">Clear</b-button>
+            <b-button type="clear" variant="success" @click="onClear">Clear</b-button>
             </b-form>
           </div>
         </b-card>
@@ -101,11 +99,7 @@ export default {
       /* Reset our form values */
       this.form.loginName = ''
       this.form.loginPassword = ''
-      /* Trick to reset/clear native browser form validation state */
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
+      this.error = null
     }
   },
   mounted: function () {
