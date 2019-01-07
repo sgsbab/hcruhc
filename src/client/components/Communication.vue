@@ -2,12 +2,7 @@
   <div id="cardLogin" class="container-fluid">
     <div class="row" align="center">
       <div class="col-sm-12">
-        <b-card title="Login"
-        img-src="https://picsum.photos/600/300/?image=25"
-        img-alt="Image"
-        img-top
-        style="max-width: 23rem;"
-        class="mb-2">
+        <b-card class="mb-2" title="Login" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top style="max-width: 23rem;">
           <div>
             <div class="alert alert-danger" role="alert" v-if="error != null" style="height=20;">
               <p v-html="error"></p>
@@ -15,31 +10,17 @@
             <b-form @submit.prevent="onSubmit" v-if="show">
             <b-form-group id="inputGroupLoginName" label-for="InputLoginName">
               <p style="text-align:left">User Name:</p>
-              <b-form-input
-                id="InputLoginName"
-                type="text"
-                v-model="form.loginName"
-                required
-                placeholder="Enter your signed up email id">
-                </b-form-input>
+              <b-form-input id="InputLoginName" class="form-control" type="text" v-model="form.loginName" required placeholder="Enter your signed up email id"></b-form-input>
             </b-form-group>
-            <b-form-group
-              id="inputGroupLoginPassword"
-              label-for="InputLoginPassword">
+            <b-form-group id="inputGroupLoginPassword" label-for="InputLoginPassword">
               <p style="text-align:left">Password:</p>
-              <b-form-input
-                id="InputLoginPassword"
-                type="password"
-                v-model="form.loginPassword"
-                required
-                placeholder="Enter password"
-              ></b-form-input>
+              <b-form-input id="InputLoginPassword" class="form-control" type="password" v-model="form.loginPassword" required placeholder="Enter password"></b-form-input>
             </b-form-group>
             <!-- <router-link to="/events"> -->
               <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
             <!-- </router-link> -->
-            <b-button type="submit" variant="primary">Login</b-button>
-            <b-button type="clear" variant="success" @click="onClear">Clear</b-button>
+            <b-button class="btn" type="submit" variant="primary">Login</b-button>
+            <b-button class="btn" type="clear" variant="success" @click="onClear">Clear</b-button>
             </b-form>
           </div>
         </b-card>

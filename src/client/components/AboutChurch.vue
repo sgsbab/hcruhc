@@ -1,6 +1,6 @@
 <template>
-        <div class="mx-5">
-             <b-card class="mt-5" bg-variant="light">
+        <div class="container">
+             <b-card class="mt-3" bg-variant="light">
                  <div class="p-1">
                     <b-img src="@/assets/church_1.png" alt></b-img>
                     <!-- <h3 class="text-center">Welcome to St. Peter's Church</h3> -->
@@ -19,7 +19,7 @@
                     </div>
                 </div>
              </b-card>
-             <b-card class="mt-5 text-white" style="background-color: rgb(0,0,0);">
+             <b-card class="mt-3 text-white" style="background-color: rgb(0,0,0);">
                  <div class="p-0">
                     <b-img src="@/assets/church_2.png" alt></b-img>
                     <p class="p-2"></p>

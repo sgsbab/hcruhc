@@ -11,7 +11,7 @@
           <div>
             <b-form @submit.prevent="onSubmit">
             <b-form-select v-model="msgOccasion" :options="options" class="mb-3" required/>
-            <b-form-textarea id="textarea1"
+            <b-form-textarea id="textarea1" class="form-control"
                         v-model="msgDesc"
                         placeholder="Enter detailed message here..."
                         :rows="3"
@@ -19,8 +19,8 @@
                         :max-rows="10">
             </b-form-textarea>
             <br>
-            <b-button type="submit" variant="success">Submit</b-button>
-            <b-button type="logout" variant="danger" @click="onLogout">Logout</b-button>
+            <b-button class="btn" type="submit" variant="success">Submit</b-button>
+            <b-button class="btn" type="logout" variant="danger" @click="onLogout">Logout</b-button>
             </b-form>
           </div>
     </b-card>

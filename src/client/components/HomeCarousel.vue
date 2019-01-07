@@ -1,11 +1,11 @@
 <template>
-  <div class="mx-5">
-    <p class="p-2"></p>
-    <b-carousel id="carousel" :interval="4000">
+  <div class="container">
+    <p class="p-0"></p>
+    <b-carousel id="carousel" class="rounded border border-info" :interval="4000">
       <!-- @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"-->
       <!-- Text slides with image -->
-      <b-carousel-slide class="home_slider_background" img-src="@/assets/CSI_Img1.jpg">
+      <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img1.jpg">
         <div class="transbox">
           <p class="church_name">St. Peter's Church</p>
           <p class="church_place">Bangalore</p>
@@ -13,7 +13,7 @@
         </div>
       </b-carousel-slide>
 
-      <b-carousel-slide class="home_slider_background" img-src="@/assets/CSI_Img2.jpg">
+      <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img2.jpg">
         <div class="transbox">
           <p class="church_name">St. Peter's Church</p>
           <p class="church_place">Bangalore</p>
@@ -21,7 +21,7 @@
         </div>
       </b-carousel-slide>
 
-      <b-carousel-slide class="home_slider_background" img-src="@/assets/CSI_Img3.jpg">
+      <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img3.jpg">
         <div class="transbox">
           <p class="church_name">St. Peter's Church</p>
           <p class="church_place">Bangalore</p>
@@ -59,7 +59,7 @@ export default {
 <style>
 div home_slider_background
 {
-  opacity: 0.9;
+  opacity: 0.2;
   position: absolute;
   top: 0;
   left: 0;
@@ -67,13 +67,13 @@ div home_slider_background
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
 }
 div.transbox {
-  opacity: 0.4;
+  opacity: 0.7;
   width: 100%;
   height: 160px;
-  background: rgba(215, 219, 221);
+  background: rgba(248, 250, 240, 0.4);
   margin-top: 40px;
 }
 p.church_name {

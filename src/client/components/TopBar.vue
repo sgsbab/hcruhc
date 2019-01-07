@@ -4,7 +4,7 @@
     <header class="header">
       <!-- Top Bar -->
       <div class="p-3 mb-2 top_bar text-yellow">
-                  <span>Next Big Event: Christmas, Tuesday 25th December 2018</span>
+                  <span>Next Big Event: Candlemas in 2019 is on the Saturday, 2nd of Feb (2/02/2019)</span>
       </div>
               <!-- <div class="donations_button ml-auto">
                 <a href="">Send Donations</a>

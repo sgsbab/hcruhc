@@ -1,6 +1,6 @@
 <template>
-<div class="mx-5">
-  <p class="p-2"></p>
+<div class="container rounded">
+  <p class="p-1"></p>
  <b-navbar class="ml-auto p-0" variant="light" type="light" toggleable style="font-weight: 600;">
     <b-navbar-toggle target="nav_text_collapse"></b-navbar-toggle>
     <b-navbar-brand>

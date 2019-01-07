@@ -1,5 +1,5 @@
 <template>
-<div class="mx-5">
+<div class="container">
         <TopBar></TopBar>
             <div>
                 <b-navbar class="ml-auto" variant="light" type="light" toggleable style="font-weight: 600;">
@@ -40,40 +40,31 @@
                 </b-navbar>
             </div>
 <b-card class="collapse" id="churchSearchPanel" bg-variant="warning">
- <div>
+ <div class="mt-2 mb-0">
      <b-form @submit.prevent="onSubmit">
-     <div class="row align-items-center justify-content-center">
-         <div class="col-md-3 pt-2">
-             <div class="form-group">
-                 <b-form-select v-model="form.selDiocese" :options="dioceses" class="mb-2" required/>
+     <div class="row justify-content-center">
+             <div class="form-group mr-5">
+                 <b-form-select v-model="form.selDiocese" :options="dioceses" class="form-control-sm" required/>
              </div>
-         </div>
-          <div class="col-md-3 pt-2">
-             <div class="form-group">
-                <b-form-select v-model="form.selChurchLocation" :options="churchLocation" class="mb-2" required/>
+             <div class="form-group mr-5">
+                <b-form-select v-model="form.selChurchLocation" :options="churchLocation" class="form-control-sm mr-4" required/>
              </div>
-          </div>
-          <div class="col-md-3">
-             <div class="form-group">
-                <b-form-input v-model="form.selChurchName" type="text" placeholder="Enter Your Church Name" class="mb-3" required/>
+             <div class="form-group mr-5">
+                <b-form-input v-model="form.selChurchName" type="text" style="font-size: 14px" placeholder="Enter Your Church Name" class="form-control-md mr-5" required/>
              </div>
-          </div>
-          <div class="col-md-1">
-             <div class="form-group">
-                <b-button class="btn btn-block" type="submit" variant="primary">Search</b-button>
+             <div class="form-group mr-5">
+                <b-button class="btn" type="submit" variant="outline-info">Search</b-button>
                 <!-- <input type="button" value="Send Request" > -->
              </div>
-          </div>
      </div>
      </b-form>
  </div>
-
 </b-card>
             <div>
-                <b-card class="text-center p-2 mt-3">
+                <b-card class="text-center p-2 mt-3 bg-light">
                     <p class="card-text heading">CHURCH OF SOUTH INDIA</p>
                 </b-card>
-                <b-carousel class="mt-5" id="carousel" :interval="4000">
+                <b-carousel class="mt-3 rounded border border-info" id="carousel" :interval="4000">
                     <b-carousel-slide img-src="@/assets/CSI_Img1.jpg">
                         <!-- <div class="transbox">
                         <p class="church_name">St. Peter's Church</p>
@@ -100,7 +91,7 @@
                 </b-carousel>
             </div>
             <div>
-             <b-card class="p-2 mt-5"  bg-variant="light">
+             <b-card class="p-2 mt-4"  bg-variant="light">
                  <div class="p-3">
                     <b-img src="@/assets/church_1.png" alt></b-img>
                     <h3 class="text-center">Welcome to Church of South India</h3>
@@ -119,7 +110,7 @@
            </b-card>
            </div>
            <div>
-                <b-card  class="p-2 mt-5" bg-variant="light">
+                <b-card  class="p-2 mt-3" bg-variant="light">
                 <div class="row">
                     <div class="col-sm-4">
                         <b-img class="p-1" src="@/assets/CSI_bishop.jpg" width="350" alt="placeholder" />
@@ -135,330 +126,111 @@
            <!-- <div>
                 <IndexCarousel></IndexCarousel>
            </div> -->
-           <!-- <b-card class="p-1 mt-5">
+           <b-card class="p-1 mt-3" style="background-color: rgb(0,0,0);">
                <div class="row justify-content-center p-3">
-                    <b-img src="@/assets/church_2.png" style="width:30px; height:30px;"></b-img>
+                    <b-img src="@/assets/church_2.png" style="width:40px; height:40px;"></b-img>
                     &nbsp;
-                    <h5 class="card-title heading-reverents">Reverents</h5>
+                    <h5 class="card-title text-light heading-reverents">Reverents</h5>
                     &nbsp;
-                    <b-img src="@/assets/church_2.png" style="width:30px; height:30px;"></b-img>
+                    <b-img src="@/assets/church_2.png" style="width:40px; height:40px;"></b-img>
                 </div>
            <b-container class="d-flex flex-row">
-               <span class="border border-secondary img-hover">
+               <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover">
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover">
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover">
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover">
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover">
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
            </b-container>
            <b-container class="d-flex flex-row">
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
+               <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
            </b-container>
            <b-container class="d-flex flex-row">
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
+               <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                            <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                </span>
-
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
+                <span class="rounded border-secondary img-hover p-1">
                                         <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
                 </span>
            </b-container>
-           <b-container class="d-flex flex-row">
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-           </b-container>
-           <b-container class="d-flex flex-row">
-               <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-           </b-container>
-           <b-container class="d-flex flex-row">
-               <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-           </b-container>
-           <b-container class="d-flex flex-row">
-               <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-                <span class="border border-secondary img-hover" >
-                                           <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-               </span>
-                <span class="border border-secondary img-hover" >
-                                        <b-img thumbnail fluid src="https://picsum.photos/600/300/?random" />
-                </span>
-           </b-container>
-           </b-card> -->
+           </b-card>
 </div>
 </template>
 
@@ -481,11 +253,11 @@ export default {
         selChurchName: ''
       },
       dioceses: [
-        { value: '', text: 'Please select Your Diocese' },
+        { value: '', text: 'Select Your Diocese' },
         { value: 'KCD', text: 'Karnataka Central Diocese (KCD)' }
       ],
       churchLocation: [
-        { value: '', text: 'Please select Your Church Location' },
+        { value: '', text: 'Select Your Church Location' },
         { value: 'Bangalore', text: 'Bangalore' },
         { value: 'tumkur', text: 'Tumkur' },
         { value: 'hassan', text: 'Hassan' },
@@ -586,11 +358,11 @@ export default {
 .img-hover img:hover {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform:translateZ(0) scale(7); /* Safari and Chrome */
-    -moz-transform:scale(7); /* Firefox */
-    -ms-transform:scale(7); /* IE 9 */
-    -o-transform:translatZ(0) scale(7); /* Opera */
-    transform:translatZ(0) scale(7);
+    -webkit-transform:translateZ(0) scale(3); /* Safari and Chrome */
+    -moz-transform:scale(3); /* Firefox */
+    -ms-transform:scale(3); /* IE 9 */
+    -o-transform:translatZ(0) scale(3); /* Opera */
+    transform:translatZ(0) scale(3);
 }
 .img-hover:hover:after {
     content:"";
