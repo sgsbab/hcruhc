@@ -2,10 +2,11 @@
 <div class="container">
         <TopBar></TopBar>
             <div>
-                <b-navbar class="ml-auto" variant="light" type="light" toggleable style="font-weight: 600;">
+                <b-navbar variant="light" type="light" toggleable="md" style="font-weight: 550;">
                     <b-navbar-toggle target="nav_text_collapse"></b-navbar-toggle>
                     <b-navbar-brand>
                         <!--<span>Believe</span> -->
+                        <p class="p-0"></p>
                         <img src="@/assets/CSI_logo.jpg" height="80" width="80" alt class="align-top"/>
                         <!-- <b-img src="@/static/CSI_logo.jpg" /> -->
                         <!--<span>St. Peter's, Bangalore</span>-->
@@ -40,23 +41,23 @@
                 </b-navbar>
             </div>
 <b-card class="collapse" id="churchSearchPanel" bg-variant="warning">
- <div class="mt-2 mb-0">
+ <div class="ml-5 justify-content-center">
      <b-form @submit.prevent="onSubmit">
-     <div class="row justify-content-center">
-             <div class="form-group mr-5">
-                 <b-form-select v-model="form.selDiocese" :options="dioceses" class="form-control-sm" required/>
-             </div>
-             <div class="form-group mr-5">
-                <b-form-select v-model="form.selChurchLocation" :options="churchLocation" class="form-control-sm mr-4" required/>
-             </div>
-             <div class="form-group mr-5">
-                <b-form-input v-model="form.selChurchName" type="text" style="font-size: 14px" placeholder="Enter Your Church Name" class="form-control-md mr-5" required/>
-             </div>
-             <div class="form-group mr-5">
-                <b-button class="btn" type="submit" variant="outline-info">Search</b-button>
-                <!-- <input type="button" value="Send Request" > -->
-             </div>
-     </div>
+        <div class="row">
+                <div class="form-group mr-5">
+                    <b-form-select v-model="form.selDiocese" :options="dioceses" class="form-control-sm" required/>
+                </div>
+                <div class="form-group mr-5">
+                    <b-form-select v-model="form.selChurchLocation" :options="churchLocation" class="form-control-sm mr-4" required/>
+                </div>
+                <div class="form-group mr-5">
+                    <b-form-input v-model="form.selChurchName" type="text" style="font-size: 14px" placeholder="Enter Your Church Name" class="form-control-md mr-5" required/>
+                </div>
+                <div class="form-group mr-5">
+                    <b-button class="btn" type="submit" variant="outline-info">Search</b-button>
+                    <!-- <input type="button" value="Send Request" > -->
+                </div>
+        </div>
      </b-form>
  </div>
 </b-card>

@@ -35,46 +35,46 @@
                 <div class="row mt-2">
                   <div class="col-lg-2 col-md-4 col-sm-6">
                   <p class="p-2"></p>
-                  <div class="activies_item">
+                  <div class="activities_item">
                     <b-img src="@/assets/eventsLink.png" alt/>
                   </div>
-                  <div class="activies_title">
+                  <div class="activities_title">
                     <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Events</span></b-link>
                   </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                   <p class="p-2"></p>
-                  <div class="activies_item">
+                  <div class="activities_item">
                     <b-img src="@/assets/churchEventsLink.png" alt/>
                   </div>
-                  <div class="activies_title">
+                  <div class="activities_title">
                     <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Church Timings</span></b-link>
                   </div>
                 </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                     <p class="p-2"></p>
-                    <div class="activies_item">
+                    <div class="activities_item">
                       <b-img src="@/assets/sermonsLink.png" alt/>
                     </div>
-                    <div class="activies_title">
+                    <div class="activities_title">
                       <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Sermons</span></b-link>
                     </div>
                   </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                     <p class="p-2"></p>
-                    <div class="activies_item">
+                    <div class="activities_item">
                       <b-img src="@/assets/dailyMassLink.png" alt/>
                     </div>
-                    <div class="activies_title">
+                    <div class="activities_title">
                       <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Daily Mass</span></b-link>
                     </div>
                   </div>
                   <div class="col-lg-2 col-md-4 col-sm-6">
                     <p class="p-2"></p>
-                    <div class="activies_item">
+                    <div class="activities_item">
                       <b-img src="@/assets/dailyPrayersLink.png" alt/>
                     </div>
-                    <div class="activies_title">
+                    <div class="activities_title">
                       <b-link><span class="text-white text-center" style="font-size: 18px; font-family: Montserrat', sans-serif;">Daily Prayers</span></b-link>
                     </div>
                   </div>
@@ -244,11 +244,11 @@ export default {
 </script>
 
 <style>
-.activies_item {
+.activities_item {
     width: 140%;
     margin-bottom: 10px;
 }
-.activies_title {
+.activities_title {
     width: 140%;
     display: inline-block;
     font-size: 18px;
