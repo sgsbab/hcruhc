@@ -11,9 +11,9 @@
     </b-navbar-brand>
     <b-collapse is-nav id="nav_text_collapse">
             <b-navbar-nav class="ml-auto">
-              <b-nav-item>
+              <!-- <b-nav-item>
                 <router-link to="/" exact active-class="activeHome" style="color: #353535;">Home</router-link>
-              </b-nav-item>
+              </b-nav-item> -->
               <b-nav-item>
                 <router-link to="/" exact style="color: #353535;">Ministries</router-link>
               </b-nav-item>

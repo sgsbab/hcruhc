@@ -2,7 +2,7 @@
   <div id="cardLogin" class="container-fluid">
     <div class="row" align="center">
       <div class="col-sm-12">
-        <b-card class="mb-2" title="Login" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top style="max-width: 23rem;">
+        <b-card class="mb-2" title="Login" img-src="@/assets/communicationLogin.jpg" img-alt="Image" img-top style="max-width: 23rem;">
           <div>
             <div class="alert alert-danger" role="alert" v-if="error != null" style="height=20;">
               <p v-html="error"></p>

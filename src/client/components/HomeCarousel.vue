@@ -6,7 +6,7 @@
       @sliding-end="onSlideEnd"-->
       <!-- Text slides with image -->
       <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img1.jpg">
-        <div class="transbox">
+        <div class="transbox d-none d-lg-block">
           <p class="church_name">St. Peter's Church</p>
           <p class="church_place">Bangalore</p>
           <p class="church_slogan">"A candle loses nothing by lighting another candle."</p>
@@ -14,7 +14,7 @@
       </b-carousel-slide>
 
       <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img2.jpg">
-        <div class="transbox">
+        <div class="transbox d-none d-lg-block">
           <p class="church_name">St. Peter's Church</p>
           <p class="church_place">Bangalore</p>
           <p class="church_slogan">"A mind fixed on God has no room for evil thoughts."</p>
@@ -22,7 +22,7 @@
       </b-carousel-slide>
 
       <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img3.jpg">
-        <div class="transbox">
+        <div class="transbox d-none d-lg-block">
           <p class="church_name">St. Peter's Church</p>
           <p class="church_place">Bangalore</p>
           <p class="church_slogan">"Every saint has a past– every sinner has a future!"</p>

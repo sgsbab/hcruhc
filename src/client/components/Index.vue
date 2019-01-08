@@ -2,6 +2,7 @@
 <div class="container">
         <TopBar></TopBar>
             <div>
+                <p class="p-1"></p>
                 <b-navbar variant="light" type="light" toggleable="md" style="font-weight: 550;">
                     <b-navbar-toggle target="nav_text_collapse"></b-navbar-toggle>
                     <b-navbar-brand>
@@ -66,7 +67,7 @@
                     <p class="card-text heading">CHURCH OF SOUTH INDIA</p>
                 </b-card>
                 <b-carousel class="mt-3 rounded border border-info" id="carousel" :interval="4000">
-                    <b-carousel-slide img-src="@/assets/CSI_Img1.jpg">
+                    <b-carousel-slide img-src="@/assets/home_slider_background1.jpg">
                         <!-- <div class="transbox">
                         <p class="church_name">St. Peter's Church</p>
                         <p class="church_place">Bangalore</p>
@@ -74,7 +75,7 @@
                         </div> -->
                     </b-carousel-slide>
 
-                    <b-carousel-slide img-src="@/assets/CSI_Img2.jpg">
+                    <b-carousel-slide img-src="@/assets/home_slider_background2.jpg">
                         <!-- <div class="transbox">
                         <p class="church_name">St. Peter's Church</p>
                         <p class="church_place">Bangalore</p>
@@ -82,7 +83,7 @@
                         </div> -->
                     </b-carousel-slide>
 
-                    <b-carousel-slide img-src="@/assets/CSI_Img3.jpg">
+                    <b-carousel-slide img-src="@/assets/home_slider_background3.jpg">
                         <!-- <div class="transbox">
                         <p class="church_name">St. Peter's Church</p>
                         <p class="church_place">Bangalore</p>
@@ -98,13 +99,13 @@
                     <h3 class="text-center">Welcome to Church of South India</h3>
                     <span class="text-center" style="font-family: Gotham A; font-style: italic">God loves us all</span>
                     <p></p>
-                    <p class="p-3"></p>
+                    <p class="p-2"></p>
                   </div>
                 <div class="row">
                     <div class="col-sm-8">
                         <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">In Luke is recounted the story that Peter caught so large an amount of fish that he fell down before the feet of Jesus and was told by the Lord, Do not be afraid; from now on you will be catching men. Jesus also gave Simon a new name: Cephas, or the rock. Becoming a disciple of Jesus, Peter acknowledged him as …the Messiah, the son of the living God. Christ responded by saying: …you are Peter and upon this rock I will build my church… He added: I will give you the keys of the kingdom of heaven. Whatever you bind on earth shall be bound in heaven; and whatever you loose on earth shall be loosed in heaven.</p>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 d-none d-lg-block">
                         <b-img class="p-1" slot="aside" src="@/assets/CSI_photo.jpg" width="350" alt="placeholder" />
                     </div>
                 </div>
@@ -112,21 +113,23 @@
            </div>
            <div>
                 <b-card  class="p-2 mt-3" bg-variant="light">
+                    <div class="">
+                    <b-img src="@/assets/church_7.png" alt></b-img>
+                    <h3 class="text-center">Bishop Rt. Rev. Prasanna Kumar Samuel</h3>
+                    <span class="text-center" style="font-family: Gotham A; font-style: italic">God loves us all</span>
+                    <p></p>
+                    <p class="p-2"></p>
+                  </div>
                 <div class="row">
-                    <div class="col-sm-4">
-                        <b-img class="p-1" src="@/assets/CSI_bishop.jpg" width="350" alt="placeholder" />
+                    <div class="col-sm-4 d-none d-lg-block">
+                        <b-img class="p-1" slot="aside" src="@/assets/CSI_bishop.jpg" width="350" alt="placeholder" />
                     </div>
                     <div class="col-sm-8">
-                        <h5>Bishop Rt. Rev. Prasanna Kumar Samuel</h5>
-                        <p class="p-2"></p>
-                        <p class="text-center" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">Applauding and acknowledging the formation and growth of Karnataka Central Diocese, Bishop Gill avers, About thirty kilometres from Bangalore, just off the highway to Mysore, there is a magnificent banyan tree which covers several acres of land. No doubt that tree began its life with a single seed and first grew into a tree with a single trunk. In course of time its branches sent down suckers which rooted and it has continued to spread in ever widening circles over the centuries. This symbolic growth of Christianity in Karnataka resulted in the new and vibrant life of Karnataka Central Diocese.</p>
+                        <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">Applauding and acknowledging the formation and growth of Karnataka Central Diocese, Bishop Gill avers, About thirty kilometres from Bangalore, just off the highway to Mysore, there is a magnificent banyan tree which covers several acres of land. No doubt that tree began its life with a single seed and first grew into a tree with a single trunk. In course of time its branches sent down suckers which rooted and it has continued to spread in ever widening circles over the centuries. This symbolic growth of Christianity in Karnataka resulted in the new and vibrant life of Karnataka Central Diocese.</p>
                     </div>
                 </div>
             </b-card>
            </div>
-           <!-- <div>
-                <IndexCarousel></IndexCarousel>
-           </div> -->
            <b-card class="p-1 mt-3" style="background-color: rgb(0,0,0);">
                <div class="row justify-content-center p-3">
                     <b-img src="@/assets/church_2.png" style="width:40px; height:40px;"></b-img>

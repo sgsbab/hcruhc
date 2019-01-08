@@ -12,14 +12,14 @@
                     <div class="col-sm-8">
                         <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">{{ chDesc }}</p>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 d-none d-lg-block">
                         <b-img class="p-1" slot="aside" src="@/assets/CSI_photo.jpg" width="350" alt="placeholder" />
                         <!-- <b-img class="p-1" slot="aside" v-bind:src="getChImg()" width="400" alt="placeholder" /> -->
                         <!-- <b-img class="p-1" slot="aside" width="400" :src="getChImg"></b-img> -->
                     </div>
                 </div>
              </b-card>
-             <b-card class="mt-3 text-white" style="background-color: rgb(0,0,0);">
+             <b-card class="mt-3 text-white" style="background-color: rgb(27, 79, 114);">
                  <div class="p-0">
                     <b-img src="@/assets/church_2.png" alt></b-img>
                     <p class="p-2"></p>
