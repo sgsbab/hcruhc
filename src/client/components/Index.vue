@@ -46,19 +46,19 @@
      <b-form @submit.prevent="onSubmit">
         <div class="row">
                 <div class="form-group mr-5">
-                    <b-form-select v-model="form.selDiocese" @change.native="getLocation" :options="dioceses" class="form-control-sm" required>
-                      <!-- <option :value="null">Select Your Dioceses</option> -->
+                    <b-form-select id="chDio" v-model="form.selDiocese" @change.native="getLocation" :options="dioceses" class="form-control-sm">
+                      <b-tooltip v-if="errorChDio != null" target="chDio" show placement="bottom">{{ errorChDio }}</b-tooltip>
                     </b-form-select>
                 </div>
                 <div class="form-group mr-5">
-                    <b-form-select v-model="form.selChurchLocation" :options="churchLocation" @change.native="getChurchName" class="form-control-sm mr-4" required>
-                        <!-- <option :value="null">Select Your Church Location</option> -->
+                    <b-form-select id="chLoc" v-model="form.selChurchLocation" :options="churchLocation" @change.native="getChurchName" class="form-control-sm mr-4">
+                      <b-tooltip v-if="errorChLoc != null" target="chLoc" show placement="bottom">{{ errorChLoc }}</b-tooltip>
                     </b-form-select>
                 </div>
                 <div class="form-group mr-5 mt-1">
                     <!-- <b-form-input v-model="form.selChurchName" type="text" autocomplete="churchName" style="font-size: 14px" placeholder="Enter Your Church Name" class="form-control-md mr-5" required/> -->
                     <vue-autosuggest id= "chNmAutoComp" :suggestions="filteredOptions" @selected="onSelected" :limit="3" :input-props = "{data:'autosuggest__input', onInputChange: this.onInputChange, placeholder:'Enter Your Church Name'}" class="form-control-md mr-5"></vue-autosuggest>
-                    <b-tooltip v-if="error != null" target="chNmAutoComp" show>{{ error }}</b-tooltip>
+                    <b-tooltip v-if="errorChNm != null" target="chNmAutoComp" show placement="bottom">{{ errorChNm }}</b-tooltip>
                 </div>
                 <div class="form-group mr-5">
                     <b-button class="btn" type="submit" variant="outline-info">Search</b-button>
@@ -258,7 +258,9 @@ export default {
       chDetailsObj: null,
       chName: null,
       axios_url: null,
-      error: null,
+      errorChDio: null,
+      errorChLoc: null,
+      errorChNm: null,
       form: {
         selDiocese: null,
         selChurchLocation: null,
@@ -343,8 +345,14 @@ export default {
     },
     onSubmit (evt) {
       // evt.preventDefault()
-      if (this.form.selChurchName === null) {
-        this.error = 'Enter Your Church Name'
+      if (this.form.selDiocese === null) {
+        this.errorChDio = 'Enter Your Diocese'
+        return
+      } else if (this.form.selChurchLocation === null) {
+        this.errorChLoc = 'Enter Your Church Location'
+        return
+      } else if (this.form.selChurchName === null) {
+        this.errorChNm = 'Enter Your Church Name'
         return
       }
       let searchChParam = {
