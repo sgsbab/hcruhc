@@ -5,12 +5,14 @@ const Joi = require('joi');
 const _ = require('lodash');
 
 church_id = new ObjectId();
+let chId = Date.now(); //Time in milliseconds is stored as church id.
 
 /*
 * This collection is to hold all the church related details
 */
 const churchSchema = new mongoose.Schema(
 {
+    _id: {type: Number, default: chId},
     churchName: {type: String, required: true},
     churchDesc: {type: String, required: true},
     country: String,

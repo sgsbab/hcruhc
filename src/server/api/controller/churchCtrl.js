@@ -45,11 +45,11 @@ async function getChurchDetails(cObj)
         let finChurch={};
         finChurch.churchName=churchList[0].churchName;
         finChurch.churchDesc=churchList[0].churchDesc;
-        finChurch.img='@/assets/CSI_photo.jpg'; //hardcoded, remove it later
+        finChurch.img='@/assets/CSI_photo.jpg'; //TODO: hardcoded, remove it later
         return new Promise((resolve, reject) =>
-        {            
-            resolve(finChurch);            
-        });        
+        {
+            resolve(finChurch);
+        });
     }
     else
     {
@@ -58,6 +58,28 @@ async function getChurchDetails(cObj)
             reject(rejData);
         });
     }   
+}
+
+/*
+* This function provides all the Churchs are part of CSI with additional 
+* details like State, district / location, Diocese and Church name
+* No parameter are required to be passed.
+*/
+async function getAllChurches()
+{
+    let rejData={};
+    let churches = await Church
+    .find({activeFlag: true})
+    .select({diocese: 1, district: 1, churchName: 1, _id: 1});
+    console.log('Churches : ', churches);
+
+    return new Promise((resolve, reject) =>
+    {
+        if (churches != null && churches.length > 0)
+            resolve(churches);
+        else
+            reject(rejData);
+    });
 }
 
 /*
@@ -83,7 +105,8 @@ async function storeChurchData(chuObj)
             _.pick(chuObj, 
                 ['churchName', 'churchDesc', 'country','state',
                 'district','diocese','indClassification']));
-                
+
+        churchDetail._id = Date.now(); //Timestamp has been set as _id instead of ObjectId
         await churchDetail.save().then(result => '').catch(err => console.log(err));
         console.log('churchCtrl - storeChurchData - Church data saved to database successfully !');
         saveStatus = true;
@@ -94,5 +117,30 @@ async function storeChurchData(chuObj)
     }
 }
 
+/*
+* This function provides all the Churchs which are part of CSI with additional 
+* details like State, district / location, Diocese and Church name
+* No parameter are required to be passed.
+*/
+async function getChurchesOnCriteria(chId)
+{
+    let churchId = chId;
+    let rejData={};
+    let churches = await Church
+    .find({activeFlag: true, _id: {$gt: churchId}})
+    .select({diocese: 1, district: 1, churchName: 1, _id: 1});
+    console.log('Churches : ', churches);
+
+    return new Promise((resolve, reject) =>
+    {
+        if (churches != null && churches.length > 0)
+            resolve(churches);
+        else
+            reject(rejData);
+    });
+}
+
+exports.getChurchesOnCriteria=getChurchesOnCriteria;
+exports.getAllChurches=getAllChurches;
 exports.storeChurchData=storeChurchData;
 exports.churchData=getChurchDetails;

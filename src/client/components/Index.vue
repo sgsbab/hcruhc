@@ -46,13 +46,19 @@
      <b-form @submit.prevent="onSubmit">
         <div class="row">
                 <div class="form-group mr-5">
-                    <b-form-select v-model="form.selDiocese" :options="dioceses" class="form-control-sm" required/>
+                    <b-form-select v-model="form.selDiocese" @change.native="getLocation" :options="dioceses" class="form-control-sm" required>
+                      <!-- <option :value="null">Select Your Dioceses</option> -->
+                    </b-form-select>
                 </div>
                 <div class="form-group mr-5">
-                    <b-form-select v-model="form.selChurchLocation" :options="churchLocation" class="form-control-sm mr-4" required/>
+                    <b-form-select v-model="form.selChurchLocation" :options="churchLocation" @change.native="getChurchName" class="form-control-sm mr-4" required>
+                        <!-- <option :value="null">Select Your Church Location</option> -->
+                    </b-form-select>
                 </div>
-                <div class="form-group mr-5">
-                    <b-form-input v-model="form.selChurchName" type="text" style="font-size: 14px" placeholder="Enter Your Church Name" class="form-control-md mr-5" required/>
+                <div class="form-group mr-5 mt-1">
+                    <!-- <b-form-input v-model="form.selChurchName" type="text" autocomplete="churchName" style="font-size: 14px" placeholder="Enter Your Church Name" class="form-control-md mr-5" required/> -->
+                    <vue-autosuggest id= "chNmAutoComp" :suggestions="filteredOptions" @selected="onSelected" :limit="3" :input-props = "{data:'autosuggest__input', onInputChange: this.onInputChange, placeholder:'Enter Your Church Name'}" class="form-control-md mr-5"></vue-autosuggest>
+                    <b-tooltip v-if="error != null" target="chNmAutoComp" show>{{ error }}</b-tooltip>
                 </div>
                 <div class="form-group mr-5">
                     <b-button class="btn" type="submit" variant="outline-info">Search</b-button>
@@ -241,67 +247,114 @@
 <script>
 import TopBar from './TopBar'
 // import IndexCarousel from './IndexCarousel'
-// import axios from 'axios'
+import axios from 'axios'
 import router from '../router'
 
 export default {
   name: 'Index',
-  components: {TopBar},
+  components: { TopBar },
   data () {
     return {
       chDetailsObj: null,
       chName: null,
+      axios_url: null,
+      error: null,
       form: {
-        selDiocese: '',
-        selChurchLocation: '',
-        selChurchName: ''
+        selDiocese: null,
+        selChurchLocation: null,
+        selChurchName: null
       },
-      dioceses: [
-        { value: '', text: 'Select Your Diocese' },
-        { value: 'KCD', text: 'Karnataka Central Diocese (KCD)' }
-      ],
-      churchLocation: [
-        { value: '', text: 'Select Your Church Location' },
-        { value: 'Bangalore', text: 'Bangalore' },
-        { value: 'tumkur', text: 'Tumkur' },
-        { value: 'hassan', text: 'Hassan' },
-        { value: 'shimoga', text: 'Shimoga' }
-      ]
+      dioceses: [ { value: null, text: 'Select Your Dioceses' } ],
+      churchLocation: [ { value: null, text: 'Select Your Church Location' } ],
+      filteredOptions: [],
+      limit: 3,
+      churchName: []
     }
   },
   mounted: function () {
-    // this.getChurchDetails()
+    var tmpDioceses = []
+    var position = null
+    if (this.axios_url === null) {
+      this.axios_url = process.env.AXIOS_BASE_URL
+    }
+    console.log('this.axios_url:', this.axios_url)
+    let url = this.axios_url.concat('/ch/gach')
+    axios.get(url).then((response) => {
+      console.log('All Church data:', response.data)
+      if (response.data != null) {
+        this.chDetailsObj = response.data
+        for (var i = 0; i < this.chDetailsObj.length; i++) {
+          // console.log('churchName:', response.data[i].churchName)
+        //   console.log('district:', chdata.district)
+          // this.dioceses.push(this.chDetailsObj[i].diocese) { value: this.chDetailsObj[i].diocese, text: this.chDetailsObj[i].diocese }
+          tmpDioceses = this.chDetailsObj[i].diocese
+          position = this.dioceses.indexOf(tmpDioceses)
+          if (!~position) {
+            this.dioceses.push(tmpDioceses)
+            console.log('dioceses push:', tmpDioceses)
+          }
+        }
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
   },
   methods: {
-    // onSubmit (evt) {
-    //   let url = 'http://localhost:3600/ch/getch'
-    //   console.log('Diocese: ', this.form.selDiocese)
-    //   let param = {
-    //     selDiocese: this.form.selDiocese,
-    //     selChurchLocation: this.form.selChurchLocation,
-    //     selChurchName: this.form.selChurchName
-    //   }
-    //   axios.post(url, param).then((response) => {
-    //     // console.log(response)
-    //     // var chObj = JSON.stringify(response.data)
-    //     var chDetailsObj = response.data
-    //     this.chName = chDetailsObj.churchName
-    //     console.log('chObject: ', chDetailsObj)
-    //     console.log('ch name: ', chDetailsObj.churchName)
-    //     console.log('ch Desc: ', chDetailsObj.churchDesc)
-    //     console.log('ch Img: ', chDetailsObj.img)
-    //     this.$store.commit('SET_CHDETAILS_OBJ', chDetailsObj)
-    //     router.push({ name: 'Home' })
-    //   }).catch((error) => {
-    //     console.log(error)
-    //   })
-    // },
+    getLocation (evt) {
+      var position = null
+      console.log('selected dioceses: ', evt.target.value)
+      this.form.selDiocese = evt.target.value
+      for (var i = 0; i < this.chDetailsObj.length; i++) {
+        if (this.chDetailsObj[i].diocese === this.form.selDiocese) {
+          var tmpLocation = this.chDetailsObj[i].district
+          position = this.churchLocation.indexOf(tmpLocation)
+          if (!~position) {
+            this.churchLocation.push(tmpLocation)
+          }
+        }
+      }
+    },
+    getChurchName (evt) {
+      // var position = null
+      console.log('selected Location: ' + evt.target.value + ' selected dioceses: ' + this.form.selDiocese)
+      this.form.selChurchLocation = evt.target.value
+      for (var i = 0; i < this.chDetailsObj.length; i++) {
+        if (this.chDetailsObj[i].diocese === this.form.selDiocese && this.chDetailsObj[i].district === this.form.selChurchLocation) {
+          var tmpchName = this.chDetailsObj[i].churchName
+          this.churchName.push(tmpchName)
+        }
+      }
+      console.log('Selected Church Name: ', this.churchName)
+    },
+    onInputChange (text, oldText) {
+      if (text === null) {
+        return
+      }
+      // Full customizability over filtering
+      const filteredData = this.churchName.filter(item => {
+        return item.toLowerCase().indexOf(text.toLowerCase()) > -1
+      }).slice(0, this.limit)
+      // Store data in one property, and filtered in another
+      this.filteredOptions = [{ data: filteredData }]
+    },
+    onSelected (item) {
+      console.log('onSelected: ', item.item)
+      this.form.selChurchName = item.item
+    },
     onSubmit (evt) {
+      // evt.preventDefault()
+      if (this.form.selChurchName === null) {
+        this.error = 'Enter Your Church Name'
+        return
+      }
       let searchChParam = {
         selDiocese: this.form.selDiocese,
         selChurchLocation: this.form.selChurchLocation,
         selChurchName: this.form.selChurchName
       }
+      console.log('selDiocese: ', this.form.selDiocese)
+      console.log('selChurchLocation: ', this.form.selChurchLocation)
+      console.log('selChurchName: ', this.form.selChurchName)
       this.$store.commit('SET_SEARCH_CHPARAM', searchChParam)
       //  this.$store.commit('SET_SEARCH_CHPARAM', searchChParam)
       //   this.$store.dispatch('GET_CH_DETAILS_DB', searchChParam).then(() => {
@@ -310,19 +363,6 @@ export default {
       //   router.push({ name: 'Home' })
       router.push({ path: '/x34ysd765kuysdksnst56mb9m' })
     }
-    // getChurchDetails: function () {
-    //   console.log('Called getChurchDetails method')
-    //   let url = 'http://localhost:3600/ch/getch'
-    //   let param = {}
-    //   axios.post(url, param).then((response) => {
-    //     console.log(response)
-    //     var chObj = JSON.parse(response.data).results[0]
-    //     this.chObj = chObj
-    //     console.log('chObj: ', this.chObj)
-    //   }).catch((error) => {
-    //     console.log(error)
-    //   })
-    // }
   }
 }
 </script>
@@ -385,5 +425,66 @@ export default {
 .search_1 {
     height: 13px;
     width: 14px;
+}
+/* get church name text component */
+#autosuggest__input {
+    outline: none;
+    position: relative;
+    display: block;
+    font-family: monospace;
+    font-size: 18px;
+    border: 2px solid #616161;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#autosuggest__input.autosuggest__input-open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.autosuggest__results-container {
+    position: relative;
+    width: 100%;
+}
+.autosuggest__results {
+    font-weight: 100;
+    margin: 0;
+    position: absolute;
+    z-index: 10000001;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: white;
+    padding: 0px;
+    overflow: scroll;
+    max-height: 200px;
+}
+.autosuggest__results ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.autosuggest__results .autosuggest__results_item {
+    cursor: pointer;
+    padding: 15px;
+}
+#autosuggest ul:nth-child(1) > .autosuggest__results_title {
+    border-top: none;
+}
+.autosuggest__results .autosuggest__results_title {
+    color: gray;
+    font-size: 11px;
+    margin-left: 0;
+    padding: 15px 13px 5px;
+    border-top: 1px solid lightgray;
+}
+.autosuggest__results .autosuggest__results_item:active,
+.autosuggest__results .autosuggest__results_item:hover,
+.autosuggest__results .autosuggest__results_item:focus,
+.autosuggest__results .autosuggest__results_item.autosuggest__results_item-highlighted {
+    background-color: #ddd;
 }
 </style>

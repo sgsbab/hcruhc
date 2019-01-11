@@ -1,5 +1,40 @@
 <template>
         <div class="container">
+              <p class="p-0"></p>
+              <b-carousel id="carousel" class="rounded border border-info" :interval="4000">
+                <!-- @sliding-start="onSlideStart"
+                @sliding-end="onSlideEnd"-->
+                <!-- Text slides with image -->
+                <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img1.jpg">
+                  <div class="transbox d-none d-lg-block">
+                    <p class="church_name">{{ chName }}</p>
+                    <p class="church_place">Bangalore</p>
+                    <p class="church_slogan">"A candle loses nothing by lighting another candle."</p>
+                  </div>
+                </b-carousel-slide>
+
+                <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img2.jpg">
+                  <div class="transbox d-none d-lg-block">
+                    <p class="church_name">{{ chName }}</p>
+                    <p class="church_place">Bangalore</p>
+                    <p class="church_slogan">"A mind fixed on God has no room for evil thoughts."</p>
+                  </div>
+                </b-carousel-slide>
+
+                <b-carousel-slide class="rounded home_slider_background" img-src="@/assets/CSI_Img3.jpg">
+                  <div class="transbox d-none d-lg-block">
+                    <p class="church_name">{{ chName }}</p>
+                    <p class="church_place">Bangalore</p>
+                    <p class="church_slogan">"Every saint has a past– every sinner has a future!"</p>
+                  </div>
+                </b-carousel-slide>
+                <!-- Slides with img slot -->
+                <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
+                <!-- <b-carousel-slide>
+                  <img slot="img" class="d-block img-fluid w-100" width="100" height="50"
+                      src="https://picsum.photos/1024/480/?image=55" alt="image slot">
+                </b-carousel-slide>-->
+              </b-carousel>
              <b-card class="mt-3" bg-variant="light">
                  <div class="p-1">
                     <b-img src="@/assets/church_1.png" alt></b-img>
@@ -22,7 +57,7 @@
              <b-card class="mt-3 text-white" style="background-color: rgb(27, 79, 114);">
                  <div class="p-0">
                     <b-img src="@/assets/church_2.png" alt></b-img>
-                    <p class="p-2"></p>
+                    <p class="p-1"></p>
                     <!-- <h3 class="text-center">Welcome to St. Peter's Church</h3> -->
                     <h2 class="text-center">Our Church Main Activities</h2>
                     <span class="text-center" style="font-family: Gotham A; font-style: italic">God loves us all</span>
@@ -119,7 +154,7 @@ export default {
     //   })
     // },
     getChDetails: function () {
-      console.log('window.sessionStorage.getItem(chInfo): ', window.sessionStorage.getItem('chInfo').chDetailsObj)
+      // console.log('window.sessionStorage.getItem(chInfo): ', window.sessionStorage.getItem('chInfo').chDetailsObj)
       if (this.$store.getters.GET_CH_DETAILS_OBJ === null) {
         let searchChParamObj = this.$store.getters.GET_SEARCH_CHPARAM
         console.log('Ab getters PARAM payload: ', searchChParamObj)
@@ -148,40 +183,50 @@ export default {
           }
           this.$store.commit('SET_CH_DETAILS_DB', chParamStore)
           console.log('getChDetailsObjStore chDetailsObj 1: ', window.sessionStorage.getItem('chInfo'))
-        // var getChDetailsObjStore = window.sessionStorage.getItem('chInfo')
-        // this.chName = getChDetailsObjStore.chNameStore
-        // this.chDesc = getChDetailsObjStore.chDescStore
-        // this.chImg = getChDetailsObjStore.chImgStore
-        // console.log('chInfo SessionStorage: ', getChDetailsObjStore)
-
-        // console.log('ch name: ', chDetailsObj.churchName)
-        // console.log('ch Desc: ', chDetailsObj.churchDesc)
-        // console.log('ch Img: ', chDetailsObj.img)
         }).catch((error) => {
           console.log(error)
         })
       } else {
-        // var getChDetailsObjStore = window.sessionStorage.getItem('chInfo')
         var getChDetailsObjStore = JSON.parse(window.sessionStorage.getItem('chInfo'))
         console.log('getChDetailsObjStore chDetailsObj 2: ', getChDetailsObjStore.chDetailsObj.chNameStore)
+        if (getChDetailsObjStore.chDetailsObj.chNameStore !== this.chName) {
+          this.$store.commit('GET_CH_DETAILS_OBJ', null)
+          if (this.axios_url === null) {
+            this.axios_url = process.env.AXIOS_BASE_URL
+          }
+          let searchChParamObj = this.$store.getters.GET_SEARCH_CHPARAM
+          // let url = 'http://localhost:3600/ch/getch'
+          let url = this.axios_url.concat('/ch/getch')
+          let param = {
+            selDiocese: searchChParamObj.selDiocese,
+            selChurchLocation: searchChParamObj.selChurchLocation,
+            selChurchName: searchChParamObj.selChurchName
+          }
+          axios.post(url, param).then((response) => {
+            // console.log(response)
+            // var chObj = JSON.stringify(response.data)
+            var chDetailsObj = response.data
+            this.chName = chDetailsObj.churchName
+            this.chDesc = chDetailsObj.churchDesc
+            this.chImg = chDetailsObj.img
+            console.log('chObject: ', chDetailsObj)
+            let chParamStore = {
+              chNameStore: chDetailsObj.churchName,
+              chDescStore: chDetailsObj.churchDesc,
+              chImgStore: chDetailsObj.img
+            }
+            this.$store.commit('SET_CH_DETAILS_DB', chParamStore)
+            console.log('getChDetailsObjStore chDetailsObj 1: ', window.sessionStorage.getItem('chInfo'))
+          }).catch((error) => {
+            console.log(error)
+          })
+        }
+        // var getChDetailsObjStore = window.sessionStorage.getItem('chInfo')
         this.chName = getChDetailsObjStore.chDetailsObj.chNameStore
         this.chDesc = getChDetailsObjStore.chDetailsObj.chDescStore
         this.chImg = getChDetailsObjStore.chDetailsObj.chImgStore
         console.log('chInfo SessionStorage: ', getChDetailsObjStore)
       }
-
-      // let searchChParamObj = this.$store.getters.GET_SEARCH_CHPARAM
-      // console.log('Ab getters PARAM payload: ', searchChParamObj)
-      // var d = $.Deferred()
-      // this.$store.dispatch('GET_CH_DETAILS_DB', searchChParamObj).then(() => {
-      //   console.log('GET_CH_DETAILS_DB dispatched...')
-      // })
-      // setTimeout(function () {
-      //   this.$store.dispatch('GET_CH_DETAILS_DB', searchChParamObj)
-      //   this.chDetailsObj = this.$store.getters.GET_CH_DETAILS_OBJ
-      //   d.resolve(this.chDetailsObj)
-      // }, 2000)
-      // return d.promise()
     },
     getChObjFromStore: function () {
       var getChDetailsObjStore = window.sessionStorage.getItem('chInfo')
@@ -258,5 +303,44 @@ export default {
     -ms-transition: all 200ms ease;
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
+}
+div home_slider_background
+{
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+div.transbox {
+  opacity: 0.7;
+  width: 100%;
+  height: 160px;
+  background: rgba(248, 250, 240, 0.4);
+  margin-top: 40px;
+}
+p.church_name {
+  color: #060607;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 60px;
+}
+p.church_place {
+  color: #060607;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 0px;
+}
+p.church_slogan {
+  color: #060607;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  font-family: serif;
+  line-height: 85px;
 }
 </style>
