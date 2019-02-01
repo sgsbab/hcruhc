@@ -45,7 +45,7 @@
                   </div>
                 <div class="row">
                     <div class="col-sm-8">
-                        <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">{{ chDesc }}</p>
+                        <p class="text-justify" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">{{ chDesc }}</p>
                     </div>
                     <div class="col-sm-4 d-none d-lg-block">
                         <b-img class="p-1" slot="aside" src="@/assets/CSI_photo.jpg" width="350" alt="placeholder" />
@@ -64,8 +64,8 @@
                     <p class="p-1"></p>
                   </div>
                 <div>
-                   <span class="text-center col-sm-15" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">There are many wonderful Christmas events you can participate in as a church, and the Christmas season is also a great time to intentionally reach out to your community.
-                     Many non-churchgoers are on the lookout for family Christmas activities or where to attend a Christmas Eve service, and there may be some families in need within your community who could use a little help this Christmas.</span>
+                   <p class="text-justify col-sm-15" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">There are many wonderful Christmas events you can participate in as a church, and the Christmas season is also a great time to intentionally reach out to your community.
+                     Many non-churchgoers are on the lookout for family Christmas activities or where to attend a Christmas Eve service, and there may be some families in need within your community who could use a little help this Christmas.</p>
                 </div>
                 <div class="row mt-2">
                   <div class="col-lg-2 col-md-4 col-sm-6">

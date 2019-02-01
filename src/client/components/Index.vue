@@ -109,7 +109,7 @@
                   </div>
                 <div class="row">
                     <div class="col-sm-8">
-                        <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">In Luke is recounted the story that Peter caught so large an amount of fish that he fell down before the feet of Jesus and was told by the Lord, Do not be afraid; from now on you will be catching men. Jesus also gave Simon a new name: Cephas, or the rock. Becoming a disciple of Jesus, Peter acknowledged him as …the Messiah, the son of the living God. Christ responded by saying: …you are Peter and upon this rock I will build my church… He added: I will give you the keys of the kingdom of heaven. Whatever you bind on earth shall be bound in heaven; and whatever you loose on earth shall be loosed in heaven.</p>
+                        <p class="text-justify" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">In Luke is recounted the story that Peter caught so large an amount of fish that he fell down before the feet of Jesus and was told by the Lord, Do not be afraid; from now on you will be catching men. Jesus also gave Simon a new name: Cephas, or the rock. Becoming a disciple of Jesus, Peter acknowledged him as …the Messiah, the son of the living God. Christ responded by saying: …you are Peter and upon this rock I will build my church… He added: I will give you the keys of the kingdom of heaven. Whatever you bind on earth shall be bound in heaven; and whatever you loose on earth shall be loosed in heaven.</p>
                     </div>
                     <div class="col-sm-4 d-none d-lg-block">
                         <b-img class="p-1" slot="aside" src="@/assets/CSI_photo.jpg" width="350" alt="placeholder" />
@@ -131,7 +131,7 @@
                         <b-img class="p-1" slot="aside" src="@/assets/CSI_bishop.jpg" width="350" alt="placeholder" />
                     </div>
                     <div class="col-sm-8">
-                        <p class="text-left" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">Applauding and acknowledging the formation and growth of Karnataka Central Diocese, Bishop Gill avers, About thirty kilometres from Bangalore, just off the highway to Mysore, there is a magnificent banyan tree which covers several acres of land. No doubt that tree began its life with a single seed and first grew into a tree with a single trunk. In course of time its branches sent down suckers which rooted and it has continued to spread in ever widening circles over the centuries. This symbolic growth of Christianity in Karnataka resulted in the new and vibrant life of Karnataka Central Diocese.</p>
+                        <p class="text-justify" style="font-size: 18px; font-family: Montserrat', sans-serif; font-style: normal;">Applauding and acknowledging the formation and growth of Karnataka Central Diocese, Bishop Gill avers, About thirty kilometres from Bangalore, just off the highway to Mysore, there is a magnificent banyan tree which covers several acres of land. No doubt that tree began its life with a single seed and first grew into a tree with a single trunk. In course of time its branches sent down suckers which rooted and it has continued to spread in ever widening circles over the centuries. This symbolic growth of Christianity in Karnataka resulted in the new and vibrant life of Karnataka Central Diocese.</p>
                     </div>
                 </div>
             </b-card>
@@ -289,6 +289,7 @@ export default {
           // console.log('churchName:', response.data[i].churchName)
         //   console.log('district:', chdata.district)
           // this.dioceses.push(this.chDetailsObj[i].diocese) { value: this.chDetailsObj[i].diocese, text: this.chDetailsObj[i].diocese }
+          console.log('Church id:', this.chDetailsObj[i]._id)
           tmpDioceses = this.chDetailsObj[i].diocese
           position = this.dioceses.indexOf(tmpDioceses)
           if (!~position) {
@@ -494,5 +495,10 @@ export default {
 .autosuggest__results .autosuggest__results_item:focus,
 .autosuggest__results .autosuggest__results_item.autosuggest__results_item-highlighted {
     background-color: #ddd;
+}
+.b-tooltip {
+  .tooltip-inner {
+    background-color: $primaryColour !important;
+  }
 }
 </style>
